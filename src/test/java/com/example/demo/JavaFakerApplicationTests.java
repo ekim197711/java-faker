@@ -1,19 +1,28 @@
 package com.example.demo;
 
 import com.example.demo.space.SpaceShip;
+import com.example.demo.space.SpaceShipFakerFactory;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Locale;
 
-@SpringBootTest
+
 class JavaFakerApplicationTests {
+
+
+    @Test
+    void createOne() {
+        for (int i = 0; i < 1000; i++) {
+            System.out.println(new SpaceShipFakerFactory().createOne());
+        }
+    }
 
     @Test
     void contextLoads() {
-        Faker faker = new Faker(Locale.US);
-        System.out.println("streetname: " + faker.address().streetName());
+        Faker faker = new Faker(Locale.GERMAN);
+        System.out.println("character: " + faker.gameOfThrones().character());
         System.out.println("city: " + faker.address().city());
         System.out.println("app name: " + faker.app().name());
         System.out.println("yeast: " + faker.beer().yeast());
